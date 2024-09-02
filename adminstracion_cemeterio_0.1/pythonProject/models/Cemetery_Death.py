@@ -15,10 +15,19 @@ class CemeteryDeath(models.Model):
         ('madre', 'Madre'),
     ], string='Parentesco Fallecido')
 
-    Empresa = fields.Selection([
+    empresa = fields.Selection([
         ('Barbieri', 'barbieri'),
         ('Colombo', 'Colombo'),
     ], string='Empresa')
 
-
-
+    def name_get(self):
+        result = []
+        for record in self:
+            name = "{} - {} - {} - {}".format(
+                record.nombre or '',
+                record.muerte or '',
+                record.empresa or '',
+                record.representante_id.name or ''
+            )
+            result.append((record.id, name))
+        return result

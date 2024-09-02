@@ -17,10 +17,10 @@
                     <field name="dni"/>
                 </group>
                 <group>
-                    <field name="death_ids"/>
+                    <field name="death_ids" widget="many2many_tags" options="{'no_create': True}"/>
                 </group>
                 <group>
-                    <field name="parcel_ids"/>
+                    <field name="parcel_ids" options="{'no_create': True}"/>
                 </group>
             </form>
         </field>
@@ -63,7 +63,7 @@
                     <field name="muerte"/>
                 </group>
                 <group>
-                    <field name="Empresa"/>
+                    <field name="empresa"/>
                     <field name="representante_id"/>
                     <field name="parentesco_fallecido"/>
                 </group>
@@ -79,7 +79,7 @@
             <tree string="Fallecidos">
                 <field name="nombre"/>
                 <field name="muerte"/>
-                <field name="Empresa"/>
+                <field name="empresa"/>
                 <field name="representante_id"/>
                 <field name="parentesco_fallecido"/>
             </tree>
@@ -120,8 +120,21 @@
                     <field name="solar"/>
                 </group>
 
+                <group attrs="{'invisible': [('toggle_option', '=', 'panteon')]}">
+                    <field name="lote"/>
+                    <field name="manzana"/>
+                    <field name="solar"/>
+                </group>
+
+                <group attrs="{'invisible': [('toggle_option', '=', 'nichera')]}">
+                    <field name="lote"/>
+                    <field name="manzana"/>
+                    <field name="solar"/>
+                </group>
+
                 <group>
                     <field name="representante_id"/>
+                    <field name="sociedad_italiana"/>
                     <field name="contract_years"/>
                     <field name="contract_start_date"/>
                     <field name="contract_end_date"/>
@@ -140,10 +153,11 @@
                 <field name="galeria" attrs="{'invisible': [('toggle_option', '=', 'boveda')]}"/>
                 <field name="fila" attrs="{'invisible': [('toggle_option', '=', 'boveda')]}"/>
                 <field name="nicho" attrs="{'invisible': [('toggle_option', '=', 'boveda')]}"/>
-                <field name="lote" attrs="{'invisible': [('toggle_option', '=', 'nicho')]}"/>
-                <field name="manzana" attrs="{'invisible': [('toggle_option', '=', 'nicho')]}"/>
-                <field name="solar" attrs="{'invisible': [('toggle_option', '=', 'nicho')]}"/>
+                <field name="lote" attrs="{'invisible': [('toggle_option', 'in', ['nicho', 'panteon', 'nichera'])]}"/>
+                <field name="manzana" attrs="{'invisible': [('toggle_option', 'in', ['nicho', 'panteon', 'nichera'])]}"/>
+                <field name="solar" attrs="{'invisible': [('toggle_option', 'in', ['nicho', 'panteon', 'nichera'])]}"/>
                 <field name="representante_id"/>
+                <field name="sociedad_italiana"/>
                 <field name="contract_years"/>
                 <field name="contract_start_date"/>
                 <field name="contract_end_date"/>

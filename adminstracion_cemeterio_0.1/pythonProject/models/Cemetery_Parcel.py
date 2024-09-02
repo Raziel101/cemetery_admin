@@ -8,10 +8,12 @@ class CemeteryParcel(models.Model):
 
     toggle_option = fields.Selection([
         ('nicho', 'Nicho'),
-        ('boveda', 'Boveda')
+        ('boveda', 'Boveda'),
+        ('panteon', 'Panteon'),
+        ('nichera', 'Nichera')
     ], string='Seleccionar Opción', required=True, default='nicho')
 
-    #Nicho
+    #Nicho,Nichera y Panteon
     galeria = fields.Integer(string='Galería')
     fila = fields.Integer(string='Fila')
     nicho = fields.Integer(string='Nicho')
@@ -23,6 +25,13 @@ class CemeteryParcel(models.Model):
 
     representante_id = fields.Many2one('cemetery.representative', string="Representante")
 
+    sociedad_italiana = fields.Boolean(string="¿Es parte de la Sociedad Ialiana?", default=False)
+
     contract_years = fields.Selection([(str(i), str(i)) for i in range(1, 100)], string='Años Contratados')
     contract_start_date = fields.Date(string='Fecha de Arrendamiento')
     contract_end_date = fields.Date(string='Fecha de Vencimiento')
+
+
+
+
+
