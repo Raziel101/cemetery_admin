@@ -7,7 +7,7 @@
         <field name="name">cemetery.representative.form</field>
         <field name="model">cemetery.representative</field>
         <field name="arch" type="xml">
-            <form string="Representante">
+            <form string="Arrendatario">
                 <group>
                     <field name="name"/>
                     <field name="domicilio"/>
@@ -31,7 +31,7 @@
         <field name="name">cemetery.representative.tree</field>
         <field name="model">cemetery.representative</field>
         <field name="arch" type="xml">
-            <tree string="Representantes">
+            <tree string="Arrendatario">
                 <field name="name"/>
                 <field name="domicilio"/>
                 <field name="telefono"/>
@@ -42,15 +42,13 @@
 
     <!-- Acción para abrir la vista de representantes -->
     <record id="action_cemetery_representative" model="ir.actions.act_window">
-        <field name="name">Representantes</field>
+        <field name="name">Arrendatario</field>
         <field name="res_model">cemetery.representative</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <!-- Menú para acceder a los representantes -->
-    <menuitem id="menu_cemetery_representative" name="Representantes" parent="menu_cemetery_root" action="action_cemetery_representative"/>
-
+    <menuitem id="menu_cemetery_representative" name="Arrendatario" parent="menu_cemetery_root" action="action_cemetery_representative"/>
 
     <!-- Vista de formulario para el modelo cemetery.death -->
     <record id="view_form_cemetery_death" model="ir.ui.view">
@@ -90,13 +88,11 @@
     <record id="action_cemetery_death" model="ir.actions.act_window">
         <field name="name">Fallecidos</field>
         <field name="res_model">cemetery.death</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <!-- Menú para acceder a los fallecidos -->
     <menuitem id="menu_cemetery_death" name="Fallecidos" parent="menu_cemetery_root" action="action_cemetery_death"/>
-
 
     <!-- Vista de formulario para el modelo cemetery.parcel -->
     <record id="view_form_cemetery_parcel" model="ir.ui.view">
@@ -107,31 +103,24 @@
                 <group>
                     <field name="toggle_option" required="1"/>
                 </group>
-
-                <group attrs="{'invisible': [('toggle_option', '=', 'boveda')]}">
+                <group>
+                    <field name="lote"/>
+                    <field name="manzana"/>
+                    <field name="solar"/>
                     <field name="galeria"/>
                     <field name="fila"/>
                     <field name="nicho"/>
                 </group>
-
-                <group attrs="{'invisible': [('toggle_option', '=', 'nicho')]}">
+                <group invisible="1" domain="[('toggle_option', '!=', 'Boveda')]">
+                    <field name="galeria"/>
+                    <field name="fila"/>
+                    <field name="nicho"/>
+                </group>
+                <group invisible="1" domain="[('toggle_option', '!=', 'Nicho')]">
                     <field name="lote"/>
                     <field name="manzana"/>
                     <field name="solar"/>
                 </group>
-
-                <group attrs="{'invisible': [('toggle_option', '=', 'panteon')]}">
-                    <field name="lote"/>
-                    <field name="manzana"/>
-                    <field name="solar"/>
-                </group>
-
-                <group attrs="{'invisible': [('toggle_option', '=', 'nichera')]}">
-                    <field name="lote"/>
-                    <field name="manzana"/>
-                    <field name="solar"/>
-                </group>
-
                 <group>
                     <field name="representante_id"/>
                     <field name="sociedad_italiana"/>
@@ -150,12 +139,6 @@
         <field name="arch" type="xml">
             <tree string="Parcelas del Cementerio">
                 <field name="toggle_option"/>
-                <field name="galeria" attrs="{'invisible': [('toggle_option', '=', 'boveda')]}"/>
-                <field name="fila" attrs="{'invisible': [('toggle_option', '=', 'boveda')]}"/>
-                <field name="nicho" attrs="{'invisible': [('toggle_option', '=', 'boveda')]}"/>
-                <field name="lote" attrs="{'invisible': [('toggle_option', 'in', ['nicho', 'panteon', 'nichera'])]}"/>
-                <field name="manzana" attrs="{'invisible': [('toggle_option', 'in', ['nicho', 'panteon', 'nichera'])]}"/>
-                <field name="solar" attrs="{'invisible': [('toggle_option', 'in', ['nicho', 'panteon', 'nichera'])]}"/>
                 <field name="representante_id"/>
                 <field name="sociedad_italiana"/>
                 <field name="contract_years"/>
@@ -169,7 +152,6 @@
     <record id="action_cemetery_parcel" model="ir.actions.act_window">
         <field name="name">Parcelas del Cementerio</field>
         <field name="res_model">cemetery.parcel</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
 
