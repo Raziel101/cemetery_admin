@@ -59,6 +59,7 @@
                 <group>
                     <field name="nombre"/>
                     <field name="muerte"/>
+                    <field name="parcel_ids"/>
                 </group>
                 <group>
                     <field name="empresa"/>
@@ -80,6 +81,7 @@
                 <field name="empresa"/>
                 <field name="representante_id"/>
                 <field name="parentesco_fallecido"/>
+                <field name="parcel_ids"/>
             </tree>
         </field>
     </record>
@@ -101,7 +103,11 @@
         <field name="arch" type="xml">
             <form string="Parcela del Cementerio">
                 <group>
-                    <field name="toggle_option" required="1"/>
+                    <!--<field name="toggle_option" required="1"/>-->
+                    <field name="panteon"/>
+                    <field name="fosa"/>
+                    <field name="nichera"/>
+                    <field name="boveda"/>
                 </group>
                 <group>
                     <field name="lote"/>
@@ -111,7 +117,7 @@
                     <field name="fila"/>
                     <field name="nicho"/>
                 </group>
-                <group invisible="1" domain="[('toggle_option', '!=', 'Boveda')]">
+                <!--<group invisible="1" domain="[('toggle_option', '!=', 'Boveda')]">
                     <field name="galeria"/>
                     <field name="fila"/>
                     <field name="nicho"/>
@@ -120,8 +126,9 @@
                     <field name="lote"/>
                     <field name="manzana"/>
                     <field name="solar"/>
-                </group>
+                </group>-->
                 <group>
+                    <field name="death_ids"/>
                     <field name="representante_id"/>
                     <field name="sociedad_italiana"/>
                     <field name="contract_years"/>
@@ -138,7 +145,10 @@
         <field name="model">cemetery.parcel</field>
         <field name="arch" type="xml">
             <tree string="Parcelas del Cementerio">
-                <field name="toggle_option"/>
+                <field name="panteon"/>
+                <field name="fosa"/>
+                <field name="nichera"/>
+                <field name="boveda"/>
                 <field name="representante_id"/>
                 <field name="sociedad_italiana"/>
                 <field name="contract_years"/>

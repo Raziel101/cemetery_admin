@@ -6,12 +6,17 @@ class CemeteryParcel(models.Model):
     _name = 'cemetery.parcel'
     _description = 'Parcela del Cementerio'
 
-    toggle_option = fields.Selection([
+    """toggle_option = fields.Selection([
         ('nicho', 'Nicho'),
         ('boveda', 'Boveda'),
         ('panteon', 'Panteon'),
         ('nichera', 'Nichera')
-    ], string='Seleccionar Opción', required=True, default='nicho')
+    ], string='Seleccionar Opción', required=True, default='nicho')"""
+    panteon = fields.Boolean(string="Panteon")
+    fosa = fields.Boolean(string="Fosa")
+    nichera = fields.Boolean(string="Nichera")
+    boveda = fields.Boolean(string="Boveda")
+
 
     #Nicho,Nichera y Panteon
     galeria = fields.Integer(string='Galería')
@@ -24,6 +29,14 @@ class CemeteryParcel(models.Model):
     solar = fields.Integer(string='Solar')
 
     representante_id = fields.Many2one('cemetery.representative', string="Representante")
+
+    death_ids = fields.Many2many(
+        'cemetery.death',
+        'cemetery_death_parcel_rel',
+        'parcel_id',
+        'death_id',
+        string="Fallecido"
+    )
 
     sociedad_italiana = fields.Boolean(string="¿Es parte de la Sociedad Ialiana?", default=False)
 

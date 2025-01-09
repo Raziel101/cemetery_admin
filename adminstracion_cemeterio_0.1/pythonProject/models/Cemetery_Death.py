@@ -5,10 +5,18 @@ class CemeteryDeath(models.Model):
     _name = 'cemetery.death'
     _description = 'Fallecido'
 
-    nombre = fields.Char(String="Nomber y Apellido")
-    muerte = fields.Date(String="Fecha de Fallecimiento")
+    nombre = fields.Char(string="Nomber y Apellido")
+    muerte = fields.Date(string="Fecha de Fallecimiento")
 
     representante_id = fields.Many2one('cemetery.representative', string="Representante")
+
+    parcel_ids = fields.Many2many(
+        'cemetery.parcel',
+        'cemetery_death_parcel_rel',
+        'death_id',
+        'parcel_id',
+        string="Parcela"
+    )
 
     parentesco_fallecido = fields.Selection([
         ('padre', 'Padre'),
