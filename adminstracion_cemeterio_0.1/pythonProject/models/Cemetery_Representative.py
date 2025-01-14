@@ -9,10 +9,10 @@ class CemeteryRepresentavie(models.Model):
     # Datos Personales
     name = fields.Char(string='Nombre y Apellido', required=True)
     domicilio = fields.Char(string='Domicilio', required=True)
-    fecha_nacimiento = fields.Date(string='Fecha de Nacimiento', required=True)
+    fecha_nacimiento = fields.Date(string='Fecha de Nacimiento')
     telefono = fields.Char(string='Teléfono')
     correo_electronico = fields.Char(string='Correo Electrónico')
-    dni = fields.Char(string='DNI', required=True)
+    dni = fields.Char(string='DNI')
 
     death_ids = fields.One2many('cemetery.death', 'representante_id', string='Fallecidos')
     parcel_ids = fields.One2many('cemetery.parcel', 'representante_id', string='Parcelas')
