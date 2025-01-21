@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_cemetery_representative,accesscemetery_representative,model_cemetery_representative,,1,1,1,1
-access_cemetery_parcel,access_cemetery_parcel,model_cemetery_parcel,,1,1,1,1
-access_cemetery_death,access_cemetery_death,model_cemetery_death,,1,1,1,1
