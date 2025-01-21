@@ -1,0 +1,57 @@
+<odoo>
+    <!-- Vista de formulario para el modelo cemetery.death -->
+    <record id="view_form_cemetery_death" model="ir.ui.view">
+        <field name="name">cemetery.death.form</field>
+        <field name="model">cemetery.death</field>
+        <field name="arch" type="xml">
+            <form string="Fallecido">
+                <!-- Grupo de Información del Fallecido -->
+                <group>
+                    <field name="nombre"/>
+                    <field name="muerte"/>
+                </group>
+
+                <!-- Grupo de Información del Representante -->
+                <group>
+                    <field name="representante_id"/>
+                </group>
+
+                <!-- Grupo de Información de la Empresa -->
+                <group>
+                    <field name="Empresa"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para el modelo cemetery.death -->
+    <record id="view_tree_cemetery_death" model="ir.ui.view">
+        <field name="name">cemetery.death.tree</field>
+        <field name="model">cemetery.death</field>
+        <field name="arch" type="xml">
+            <tree string="Fallecidos">
+                <field name="nombre"/>
+                <field name="muerte"/>
+                <field name="representante_id"/>
+                <field name="Empresa"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción para abrir la vista de formulario y árbol -->
+    <record id="action_cemetery_death" model="ir.actions.act_window">
+        <field name="name">Fallecidos</field>
+        <field name="res_model">cemetery.death</field>
+       <!-- <field name="view_type">form</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registre los fallecidos aquí.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menú para acceder a los fallecidos -->
+    <menuitem id="menu_cemetery_death_root" name="Cementerio"/>
+    <menuitem id="menu_cemetery_death" name="Fallecidos" parent="menu_cemetery_death_root" action="action_cemetery_death"/>
+</odoo>
