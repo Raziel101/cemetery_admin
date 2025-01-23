@@ -1,0 +1,171 @@
+<odoo>
+    <!-- Menú raíz común para Cementerio -->
+    <menuitem id="menu_cemetery_root" name="Cementerio"/>
+
+    <!-- Vista de formulario para el modelo cemetery.representative -->
+    <record id="view_form_cemetery_representative" model="ir.ui.view">
+        <field name="name">cemetery.representative.form</field>
+        <field name="model">cemetery.representative</field>
+        <field name="arch" type="xml">
+            <form string="Arrendatario">
+                <group>
+                    <field name="name"/>
+                    <field name="domicilio"/>
+                    <field name="fecha_nacimiento"/>
+                    <field name="telefono"/>
+                    <field name="correo_electronico"/>
+                    <field name="dni"/>
+                    <field name="observaciones"/>
+                </group>
+                <group>
+                    <field name="death_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                </group>
+                <group>
+                    <field name="parcel_ids" options="{'no_create': True}"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para el modelo cemetery.representative -->
+    <record id="view_tree_cemetery_representative" model="ir.ui.view">
+        <field name="name">cemetery.representative.tree</field>
+        <field name="model">cemetery.representative</field>
+        <field name="arch" type="xml">
+            <tree string="Arrendatario">
+                <field name="name"/>
+                <field name="domicilio"/>
+                <field name="telefono"/>
+                <field name="dni"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción para abrir la vista de representantes -->
+    <record id="action_cemetery_representative" model="ir.actions.act_window">
+        <field name="name">Arrendatario</field>
+        <field name="res_model">cemetery.representative</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú para acceder a los representantes -->
+    <menuitem id="menu_cemetery_representative" name="Arrendatario" parent="menu_cemetery_root" action="action_cemetery_representative"/>
+
+    <!-- Vista de formulario para el modelo cemetery.death -->
+    <record id="view_form_cemetery_death" model="ir.ui.view">
+        <field name="name">cemetery.death.form</field>
+        <field name="model">cemetery.death</field>
+        <field name="arch" type="xml">
+            <form string="Fallecido">
+                <group>
+                    <field name="nombre"/>
+                    <field name="muerte"/>
+                    <field name="parcel_ids"/>
+                </group>
+                <group>
+                    <field name="empresa"/>
+                    <field name="representante_id"/>
+                    <field name="parentesco_fallecido"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para el modelo cemetery.death -->
+    <record id="view_tree_cemetery_death" model="ir.ui.view">
+        <field name="name">cemetery.death.tree</field>
+        <field name="model">cemetery.death</field>
+        <field name="arch" type="xml">
+            <tree string="Fallecidos">
+                <field name="nombre"/>
+                <field name="muerte"/>
+                <field name="empresa"/>
+                <field name="representante_id"/>
+                <field name="parentesco_fallecido"/>
+                <field name="parcel_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción para abrir la vista de fallecidos -->
+    <record id="action_cemetery_death" model="ir.actions.act_window">
+        <field name="name">Fallecidos</field>
+        <field name="res_model">cemetery.death</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú para acceder a los fallecidos -->
+    <menuitem id="menu_cemetery_death" name="Fallecidos" parent="menu_cemetery_root" action="action_cemetery_death"/>
+
+    <!-- Vista de formulario para el modelo cemetery.parcel -->
+    <record id="view_form_cemetery_parcel" model="ir.ui.view">
+        <field name="name">cemetery.parcel.form</field>
+        <field name="model">cemetery.parcel</field>
+        <field name="arch" type="xml">
+            <form string="Parcela del Cementerio">
+                <group>
+                    <!--<field name="toggle_option" required="1"/>-->
+                    <field name="panteon"/>
+                    <field name="fosa"/>
+                    <field name="nichera"/>
+                    <field name="boveda"/>
+                </group>
+                <group>
+                    <field name="lote"/>
+                    <field name="manzana"/>
+                    <field name="solar"/>
+                    <field name="galeria"/>
+                    <field name="fila"/>
+                    <field name="nicho"/>
+                </group>
+                <!--<group invisible="1" domain="[('toggle_option', '!=', 'Boveda')]">
+                    <field name="galeria"/>
+                    <field name="fila"/>
+                    <field name="nicho"/>
+                </group>
+                <group invisible="1" domain="[('toggle_option', '!=', 'Nicho')]">
+                    <field name="lote"/>
+                    <field name="manzana"/>
+                    <field name="solar"/>
+                </group>-->
+                <group>
+                    <field name="death_ids"/>
+                    <field name="representante_id"/>
+                    <field name="sociedad_italiana"/>
+                    <field name="contract_years"/>
+                    <field name="contract_start_date"/>
+                    <field name="contract_end_date"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para el modelo cemetery.parcel -->
+    <record id="view_tree_cemetery_parcel" model="ir.ui.view">
+        <field name="name">cemetery.parcel.tree</field>
+        <field name="model">cemetery.parcel</field>
+        <field name="arch" type="xml">
+            <tree string="Parcelas del Cementerio">
+                <field name="panteon"/>
+                <field name="fosa"/>
+                <field name="nichera"/>
+                <field name="boveda"/>
+                <field name="representante_id"/>
+                <field name="sociedad_italiana"/>
+                <field name="contract_years"/>
+                <field name="contract_start_date"/>
+                <field name="contract_end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción para abrir la vista de parcelas -->
+    <record id="action_cemetery_parcel" model="ir.actions.act_window">
+        <field name="name">Parcelas del Cementerio</field>
+        <field name="res_model">cemetery.parcel</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú para acceder a las parcelas -->
+    <menuitem id="menu_cemetery_parcel" name="Parcelas" parent="menu_cemetery_root" action="action_cemetery_parcel"/>
+</odoo>

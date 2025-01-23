@@ -1,0 +1,77 @@
+<odoo>
+    <!-- Vista de formulario para el modelo cemetery.parcel -->
+    <record id="view_form_cemetery_parcel" model="ir.ui.view">
+        <field name="name">cemetery.parcel.form</field>
+        <field name="model">cemetery.parcel</field>
+        <field name="arch" type="xml">
+            <form string="Parcela del Cementerio">
+                <group>
+                    <!-- Selección de Opción (Nicho o Boveda) -->
+                    <field name="toggle_option" required="1"/>
+                </group>
+
+                <!-- Sección Nicho -->
+                <group states="{'nicho': [('toggle_option', '=', 'nicho')]}">
+                    <field name="galeria"/>
+                    <field name="fila"/>
+                    <field name="nicho"/>
+                </group>
+
+                <!-- Sección Boveda -->
+                <group states="{'boveda': [('toggle_option', '=', 'boveda')]}">
+                    <field name="lote"/>
+                    <field name="manzana"/>
+                    <field name="solar"/>
+                </group>
+
+                <!-- Sección Información General -->
+                <group>
+                    <field name="representante_id"/>
+                    <field name="ocupado"/>
+                    <field name="contract_years"/>
+                    <field name="contract_start_date"/>
+                    <field name="contract_end_date"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para el modelo cemetery.parcel -->
+    <record id="view_tree_cemetery_parcel" model="ir.ui.view">
+        <field name="name">cemetery.parcel.tree</field>
+        <field name="model">cemetery.parcel</field>
+        <field name="arch" type="xml">
+            <tree string="Parcelas del Cementerio">
+                <field name="toggle_option"/>
+                <field name="galeria"/>
+                <field name="fila"/>
+                <field name="nicho"/>
+                <field name="lote"/>
+                <field name="manzana"/>
+                <field name="solar"/>
+                <field name="representante_id"/>
+                <field name="ocupado"/>
+                <field name="contract_years"/>
+                <field name="contract_start_date"/>
+                <field name="contract_end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción para abrir la vista de formulario y árbol -->
+    <record id="action_cemetery_parcel" model="ir.actions.act_window">
+        <field name="name">Parcelas del Cementerio</field>
+        <field name="res_model">cemetery.parcel</field>
+        <!--<field name="view_type">form</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Registre y gestione las parcelas del cementerio aquí.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menú para acceder a las parcelas -->
+    <menuitem id="menu_cemetery_parcel_root" name="Cementerio"/>
+    <menuitem id="menu_cemetery_parcel" name="Parcelas" parent="menu_cemetery_parcel_root" action="action_cemetery_parcel"/>
+</odoo>
