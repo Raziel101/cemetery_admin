@@ -15,6 +15,7 @@
                     <field name="telefono"/>
                     <field name="correo_electronico"/>
                     <field name="dni"/>
+                    <field name="observaciones"/>
                 </group>
                 <group>
                     <field name="death_ids" widget="many2many_tags" options="{'no_create': True}"/>

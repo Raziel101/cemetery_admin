@@ -1,5 +1,5 @@
 {
-    'name': 'Adminstracion Cementerio 1.0',
+    'name': 'Adminstracion Cementerio',
     'version': '1.0',
     'summary': 'Gestión de Parcelas del Cementerio 1.0',
     'author': 'Palmerola',
