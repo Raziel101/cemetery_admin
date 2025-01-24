@@ -12,6 +12,7 @@ class CemeteryParcel(models.Model):
         ('panteon', 'Panteon'),
         ('nichera', 'Nichera')
     ], string='Seleccionar Opción', required=True, default='nicho')"""
+
     panteon = fields.Boolean(string="Panteon")
     fosa = fields.Boolean(string="Fosa")
     nichera = fields.Boolean(string="Nichera")
