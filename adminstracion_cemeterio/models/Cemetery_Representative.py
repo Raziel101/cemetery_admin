@@ -14,6 +14,7 @@ class CemeteryRepresentavie(models.Model):
     correo_electronico = fields.Char(string='Correo Electrónico')
     dni = fields.Char(string='DNI')
     observaciones = fields.Char(string="Observaciones")
+    ciudad = fields.Char(string="Ciudad")
 
     death_ids = fields.One2many('cemetery.death', 'representante_id', string='Fallecidos')
     parcel_ids = fields.One2many('cemetery.parcel', 'representante_id', string='Parcelas')

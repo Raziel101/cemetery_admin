@@ -5,7 +5,7 @@ class CemeteryDeath(models.Model):
     _name = 'cemetery.death'
     _description = 'Fallecido'
 
-    nombre = fields.Char(string="Nomber y Apellido")
+    name = fields.Char(string="Nomber y Apellido")
     muerte = fields.Date(string="Fecha de Fallecimiento")
     observaciones = fields.Char(string="Observaciones")
 
@@ -23,7 +23,7 @@ class CemeteryDeath(models.Model):
         ('padre', 'Padre'),
         ('madre', 'Madre'),
         ('abuelo', 'Abuelo'),
-        ('abuela', 'abuela'),
+        ('abuela', 'Abuela'),
         ('padrastro', 'Padrastro'),
         ('madrastra', 'Madrastra'),
         ('hijo', 'Hijo'),
@@ -50,8 +50,8 @@ class CemeteryDeath(models.Model):
     ], string='Parentesco Fallecido')
 
     empresa = fields.Selection([
-        ('Barbieri', 'barbieri'),
-        ('Colombo', 'Colombo'),
+        ('barbieri', 'Barbieri'),
+        ('colombo', 'Colombo'),
         ('monti', 'Monti'),
         ('brarda', 'Brarda'),
         ('otra', 'Otra'),
