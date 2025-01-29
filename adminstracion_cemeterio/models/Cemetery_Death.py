@@ -5,8 +5,9 @@ class CemeteryDeath(models.Model):
     _name = 'cemetery.death'
     _description = 'Fallecido'
 
-    nombre = fields.Char(string="Nomber y Apellido")
+    name = fields.Char(string="Nomber y Apellido")
     muerte = fields.Date(string="Fecha de Fallecimiento")
+    observaciones = fields.Char(string="Observaciones")
 
     representante_id = fields.Many2one('cemetery.representative', string="Representante")
 
@@ -21,11 +22,39 @@ class CemeteryDeath(models.Model):
     parentesco_fallecido = fields.Selection([
         ('padre', 'Padre'),
         ('madre', 'Madre'),
+        ('abuelo', 'Abuelo'),
+        ('abuela', 'Abuela'),
+        ('padrastro', 'Padrastro'),
+        ('madrastra', 'Madrastra'),
+        ('hijo', 'Hijo'),
+        ('hija', 'Hija'),
+        ('hijo politico', 'Hijo Politico'),
+        ('sobrino politico', 'Sobrino Politico'),
+        ('conyuge', 'Conyuge'),
+        ('esposa', 'Esposa'),
+        ('esposo', 'Esposo'),
+        ('concubina', 'Concubina'),
+        ('concubino', 'Concubino'),
+        ('cuñado', 'Cuñado'),
+        ('cuñada', 'Cuñada'),
+        ('hermano', 'Hermano'),
+        ('hermana', 'Hermana'),
+        ('nieto', 'Nieto'),
+        ('nieta', 'Nieta'),
+        ('bisnieto', 'Bisnieto'),
+        ('bisnieta', 'Bisnieta'),
+        ('vecino', 'Vecino'),
+        ('vecina', 'Vecina'),
+        ('encargado hogar', 'Encargado Hogar'),
+        ('otra', 'Otra')
     ], string='Parentesco Fallecido')
 
     empresa = fields.Selection([
-        ('Barbieri', 'barbieri'),
-        ('Colombo', 'Colombo'),
+        ('barbieri', 'Barbieri'),
+        ('colombo', 'Colombo'),
+        ('monti', 'Monti'),
+        ('brarda', 'Brarda'),
+        ('otra', 'Otra'),
     ], string='Empresa')
 
     def name_get(self):

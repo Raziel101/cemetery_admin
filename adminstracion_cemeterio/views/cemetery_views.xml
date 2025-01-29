@@ -15,6 +15,7 @@
                     <field name="telefono"/>
                     <field name="correo_electronico"/>
                     <field name="dni"/>
+                    <field name="ciudad"/>
                     <field name="observaciones"/>
                 </group>
                 <group>
@@ -58,9 +59,10 @@
         <field name="arch" type="xml">
             <form string="Fallecido">
                 <group>
-                    <field name="nombre"/>
+                    <field name="name"/>
                     <field name="muerte"/>
                     <field name="parcel_ids"/>
+                    <field name="observaciones"/>
                 </group>
                 <group>
                     <field name="empresa"/>
@@ -77,7 +79,7 @@
         <field name="model">cemetery.death</field>
         <field name="arch" type="xml">
             <tree string="Fallecidos">
-                <field name="nombre"/>
+                <field name="name"/>
                 <field name="muerte"/>
                 <field name="empresa"/>
                 <field name="representante_id"/>
@@ -146,15 +148,21 @@
         <field name="model">cemetery.parcel</field>
         <field name="arch" type="xml">
             <tree string="Parcelas del Cementerio">
-                <field name="panteon"/>
-                <field name="fosa"/>
-                <field name="nichera"/>
-                <field name="boveda"/>
+                <field name="lote"/>
+                <field name="manzana"/>
+                <field name="solar"/>
+                <field name="galeria"/>
+                <field name="fila"/>
+                <field name="nicho"/>
                 <field name="representante_id"/>
                 <field name="sociedad_italiana"/>
                 <field name="contract_years"/>
                 <field name="contract_start_date"/>
                 <field name="contract_end_date"/>
+                <field name="panteon"/>
+                <field name="fosa"/>
+                <field name="nichera"/>
+                <field name="boveda"/>
             </tree>
         </field>
     </record>
