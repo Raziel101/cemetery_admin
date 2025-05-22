@@ -61,6 +61,8 @@
                 <group>
                     <field name="name"/>
                     <field name="muerte"/>
+                    <field name="inhumacion"/>
+                    <field name="fecha_baja"/>
                     <field name="parcel_ids"/>
                     <field name="observaciones"/>
                 </group>
@@ -81,6 +83,7 @@
             <tree string="Fallecidos">
                 <field name="name"/>
                 <field name="muerte"/>
+                <field name="inhumacion"/>
                 <field name="empresa"/>
                 <field name="representante_id"/>
                 <field name="parentesco_fallecido"/>

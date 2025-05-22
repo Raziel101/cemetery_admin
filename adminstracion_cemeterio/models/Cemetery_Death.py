@@ -7,6 +7,7 @@ class CemeteryDeath(models.Model):
 
     name = fields.Char(string="Nomber y Apellido")
     muerte = fields.Date(string="Fecha de Fallecimiento")
+    inhumacion = fields.Date(string="Inhumaciòn")
     observaciones = fields.Char(string="Observaciones")
 
     representante_id = fields.Many2one('cemetery.representative', string="Representante")
@@ -56,6 +57,8 @@ class CemeteryDeath(models.Model):
         ('brarda', 'Brarda'),
         ('otra', 'Otra'),
     ], string='Empresa')
+
+    fecha_baja = fields.Date(string="Fecha de baja")
 
     def name_get(self):
         result = []
