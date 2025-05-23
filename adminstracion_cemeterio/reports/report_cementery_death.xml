@@ -1,0 +1,59 @@
+<odoo>
+    <template id="report_cemetery_death">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <h2 style="text-align: center;">Reporte de Fallecido</h2>
+                <table class="table table-sm table-bordered" style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <th>Nombre y Apellido</th>
+                            <td><t t-esc="doc.name"/></td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Fallecimiento</th>
+                            <td><t t-esc="doc.muerte"/></td>
+                        </tr>
+                        <tr>
+                            <th>Observaciones</th>
+                            <td><t t-esc="doc.observaciones"/></td>
+                        </tr>
+                        <tr>
+                            <th>Empresa</th>
+                            <td><t t-esc="dict(doc.fields_get()['empresa']['selection']).get(doc.empresa, '')"/></td>
+                        </tr>
+                        <tr>
+                            <th>Parentesco Fallecido</th>
+                            <td><t t-esc="dict(doc.fields_get()['parentesco_fallecido']['selection']).get(doc.parentesco_fallecido, '')"/></td>
+                        </tr>
+                        <tr>
+                            <th>Representante</th>
+                            <td><t t-esc="doc.representante_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <th>Parcelas Relacionadas</th>
+                            <td>
+                                <ul>
+                                    <t t-foreach="doc.parcel_ids" t-as="parcel">
+                                        <li>
+                                            <t t-esc="parcel.name"/>
+                                            <t t-if="parcel.location"> - <t t-esc="parcel.location"/></t>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <record id="action_report_cemetery_death" model="ir.actions.report">
+        <field name="name">Reporte de Fallecidos</field>
+        <field name="model">cemetery.death</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">cemetery.report_cemetery_death</field>
+        <field name="report_file">cemetery.report_cemetery_death</field>
+        <field name="print_report_name">'Fallecido - %s' % (object.name)</field>
+    </record>
+</odoo>
